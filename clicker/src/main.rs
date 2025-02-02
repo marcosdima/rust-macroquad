@@ -1,4 +1,5 @@
 use macroquad::prelude::*;
+use macroquad::audio::{play_sound_once, load_sound};
 
 fn conf() -> Conf {
     Conf {
@@ -15,6 +16,7 @@ async fn main() {
     let r = 70.;
     let circle = Circle::new(x,y,r);
     let mut score = 0;
+    let click_sound = load_sound("res/click.wav").await.unwrap();
     
     loop {
         clear_background(BEIGE); // Clears screen and set this color
@@ -26,6 +28,7 @@ async fn main() {
 
             if circle.contains(&vec2(mouse_x, mouse_y)) {
                 score += 1;
+                play_sound_once(&click_sound);
             }
         }
 
