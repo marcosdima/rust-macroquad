@@ -13,14 +13,17 @@ fn conf() -> Conf {
 
 #[macroquad::main(conf)]
 async fn main() {
-    let x = 0.;
-    let y = 0.;
+    let mut x = 0.;
+    let mut y = 0.;
     let texture: Texture2D = load_texture("assets/images/test.png").await.unwrap();
-    let ente = Entity::new(x, y, texture);
+    let mut ente = Entity::new(x, y, texture);
 
     loop {
         clear_background(BEIGE);
 
+        x += 1.;
+        y += 1.;
+        ente.set_position(x, y);
         ente.draw();
 
         next_frame().await;

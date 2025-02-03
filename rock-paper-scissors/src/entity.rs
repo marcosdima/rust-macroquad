@@ -16,6 +16,10 @@ impl Entity {
     pub fn draw(&self) {
         draw_texture(&self.texture, self.pos.x, self.pos.y, BEIGE);
     }
+
+    pub fn set_position(&mut self, x: f32, y: f32) {
+        self.pos = vec2(x, y);
+    }
 }
 
 /*
