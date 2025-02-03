@@ -1,31 +1,25 @@
-use macroquad::prelude::*;
-
 pub struct Entity {
-    pub pos: Vec2,
-    pub texture: Texture2D,
+    pos: (f32, f32),
+    texture_id: String,
 }
 
 impl Entity {
-    pub fn new(x: f32, y: f32, texture: Texture2D) -> Self {
+    pub fn new(x: f32, y: f32, texture_id: String) -> Self {
         Entity {
-            pos: vec2(x, y),
-            texture,
+            pos: (x, y),
+            texture_id,
         }
     }
 
-    pub fn draw(&self) {
-        draw_texture(&self.texture, self.pos.x, self.pos.y, BEIGE);
+    pub fn set_position(&mut self, x: f32, y: f32) {
+        self.pos = (x, y);
     }
 
-    pub fn set_position(&mut self, x: f32, y: f32) {
-        self.pos = vec2(x, y);
+    pub fn get_position(&self) -> (f32, f32) {
+        self.pos
+    }
+
+    pub fn get_texture_id(&self) -> &str {
+        &self.texture_id
     }
 }
-
-/*
-Require:
-- Draw Texture. -> draw_texture(texture, x, y, color);
-- Move.
-- Animate.
-- Make a sound.
-*/
