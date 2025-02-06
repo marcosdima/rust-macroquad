@@ -21,7 +21,7 @@ impl TextureHandler {
         let entity_id = entity.get_texture_id();
 
         if let Some(texture) = self.textures.get(entity_id) {
-            let (x, y) = entity.get_position();
+            let (x, y) = entity.get_position().pair();
             draw_texture(texture, x, y, WHITE);
         } else {
             panic!("Error: Texture id '{}' was not found!", entity_id)
